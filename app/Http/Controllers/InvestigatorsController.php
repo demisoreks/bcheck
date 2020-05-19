@@ -41,6 +41,7 @@ class InvestigatorsController extends Controller
                     ->withInput();
         } else {
             unset($input['picture']);
+            $input['competencies'] = implode(",", $input['competencies']);
             $employee = AccEmployee::where('username', $input['username'])->first();
             $investigators = BchInvestigator::where('employee_id', $employee->id);
             unset($input['username']);
