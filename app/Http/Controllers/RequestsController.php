@@ -131,4 +131,22 @@ class RequestsController extends Controller
         return Redirect::route('requests.index')
                 ->with('success', UtilsController::response('Completed!', 'Request submitted successfully.'));
     }
+    
+    public function billing() {
+        $requests = BchRequest::where('status', 'Completed')->whereNull('invoice')->get();
+        return view('requests.billing', compact('requests'));
+    }
+    
+    public function invoice(BchRequest $request) {
+        return view('requests.invoice', compact('request'));
+    }
+    
+    public function attach_invoice(BchRequest $request, Request $req) {
+        $request->update([
+            'invoice' => $req->input('invoice')
+        ]);
+        ActivitiesController::log('Invoice was attached to request for '.$request->client->name.'.');
+        return Redirect::route('requests.billing')
+                ->with('success', UtilsController::response('Completed!', 'Invoice attached successfully.'));
+    }
 }

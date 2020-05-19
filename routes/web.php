@@ -63,6 +63,15 @@ Route::bind('clients', function($value, $route) {
     return App\BchClient::findBySlug($value)->first();
 });
 
+Route::post('requests/{request}/attach_invoice', [
+    'as' => 'requests.attach_invoice', 'uses' => 'RequestsController@attach_invoice'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin']);
+Route::get('requests/{request}/invoice', [
+    'as' => 'requests.invoice', 'uses' => 'RequestsController@invoice'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin']);
+Route::get('requests/billing', [
+    'as' => 'requests.billing', 'uses' => 'RequestsController@billing'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin']);
 Route::get('requests/{request}/cancel', [
     'as' => 'requests.cancel', 'uses' => 'RequestsController@cancel'
 ])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin,Investigator,Manager']);

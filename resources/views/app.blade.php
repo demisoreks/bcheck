@@ -291,6 +291,9 @@ use GuzzleHttp\Client;
                                     <nav class="nav flex-column">
                                         <a class="nav-link" href="{{ route('requests.index') }}">Service Requests</a>
                                         <a class="nav-link" href="{{ route('clients.index') }}">Clients</a>
+                                        @if (count(array_intersect($permissions, ['Admin'])) != 0)
+                                        <a class="nav-link" href="{{ route('requests.billing') }}">Billing</a>
+                                        @endif
                                     </nav>
                                 </div>
                             </div> 
