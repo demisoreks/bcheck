@@ -41,7 +41,7 @@
     </div>
 </div>
 <?php
-if ($investigator) {
+if (isset($investigator)) {
     $comps = [];
     foreach (explode(',', str_replace(['[', ']'], '', $investigator->competencies)) as $c) {
         $comps[] = (int) str_replace('"', '', $c);
