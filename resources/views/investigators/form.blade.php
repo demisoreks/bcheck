@@ -41,9 +41,13 @@
     </div>
 </div>
 <?php
-$comps = [];
-foreach (explode(',', str_replace(['[', ']'], '', $investigator->competencies)) as $c) {
-    $comps[] = (int) str_replace('"', '', $c);
+if ($nvestigator) {
+    $comps = [];
+    foreach (explode(',', str_replace(['[', ']'], '', $investigator->competencies)) as $c) {
+        $comps[] = (int) str_replace('"', '', $c);
+    }
+} else {
+    $comps = [];
 }
 ?>
 <div class="form-group row">
