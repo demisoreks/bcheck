@@ -15,7 +15,7 @@ $link_id = (int) config('var.link_id');
 
 Route::get('/', [
     'as' => 'welcome', 'uses' => 'WelcomeController@index'
-])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin,Investigator']);
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Admin,Investigator,Manager']);
 
 Route::get('investigators', [
     'as' => 'investigators.index', 'uses' => 'InvestigatorsController@index'

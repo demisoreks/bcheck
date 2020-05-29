@@ -22,8 +22,8 @@
                     <td>{{ $task->request->request_date_time }}</td>
                     <td>{{ $task->request->client->name }}<br />{{ $task->request->client->mobile_no }}<br />{{ $task->request->client->email }}</td>
                     <td>{{ $task->service->description }}</td>
-                    <td>{{ $task->service->sla }} Hour(s)</td>
-                    <td>{{ Carbon\Carbon::now()->diffInHours($task->request->request_date_time) }} Hour(s) @if (Carbon\Carbon::now()->diffInHours($task->request->request_date_time) > $task->service->sla) <span class="text-danger"><i class="fas fa-exclamation-circle" title="Overdue"></i></span> @endif </td>
+                    <td>{{ $task->service->sla }} Day(s)</td>
+                    <td>{{ Carbon\Carbon::now()->diffInDays($task->request->request_date_time) }} Day(s) @if (Carbon\Carbon::now()->diffInDays($task->request->request_date_time) > $task->service->sla) <span class="text-danger"><i class="fas fa-exclamation-circle" title="Overdue"></i></span> @endif </td>
                     <td>{{ $task->status }}</td>
                     <td>@if ($task->status == "In Progress") {{ App\BchInvestigator::where('employee_id', $task->employee_id)->first()->first_name.' '.App\BchInvestigator::where('employee_id', $task->employee_id)->first()->surname }} @endif</td>
                     <td class="text-center">

@@ -9,7 +9,7 @@
     <div class="col-md-4 input-group">
         {!! Form::number('sla', $value = null, ['class' => 'form-control', 'placeholder' => 'SLA (Response Time)', 'required' => true, 'aria-describedby' => 'addon']) !!}
         <div class="input-group-append">
-            <span class="input-group-text" id="addon">Hours</span>
+            <span class="input-group-text" id="addon">Day(s)</span>
         </div>
     </div>
 </div>

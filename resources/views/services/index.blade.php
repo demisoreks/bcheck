@@ -34,7 +34,7 @@
                                     @if ($service->active)
                                 <tr>
                                     <td>{{ $service->description }}</td>
-                                    <td align="right">{{ $service->sla }} Hours</td>
+                                    <td align="right">{{ $service->sla }} Day(s)</td>
                                     <td align="right">{{ number_format($service->base_cost, 2) }}</td>
                                     <td><a class="btn btn-primary btn-block btn-sm" href="{{ route('services.requirements.index', [$service->slug()]) }}">Requirements</a></td>
                                     <td class="text-center">
@@ -47,7 +47,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="card">
                 <div class="card-header bg-white text-primary" id="heading4" style="padding: 0;">
@@ -74,7 +74,7 @@
                                     @if (!$service->active)
                                 <tr>
                                     <td>{{ $service->description }}</td>
-                                    <td align="right">{{ $service->sla }} Hours</td>
+                                    <td align="right">{{ $service->sla }} Day(s)</td>
                                     <td align="right">{{ number_format($service->base_cost, 2) }}</td>
                                     <td><a class="btn btn-primary btn-block btn-sm" href="{{ route('services.requirements.index', [$service->slug()]) }}">Requirements</a></td>
                                     <td class="text-center">
@@ -86,7 +86,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>
