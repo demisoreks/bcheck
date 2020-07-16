@@ -12,7 +12,7 @@ use GuzzleHttp\Client;
         @endif
 
         <title>{{ $page_title }} | {{ config('app.name') }}</title>
-        
+
         <style type="text/css">
         #map {
           height: 100%;
@@ -93,7 +93,7 @@ use GuzzleHttp\Client;
         #target {
           width: 345px;
         }
-        
+
         .pac-container {
             background-color: #FFF;
             z-index: 100000;
@@ -108,7 +108,7 @@ use GuzzleHttp\Client;
             z-index: 1000;
         }​
         </style>
-        
+
         {!! Html::style('css/app.css') !!}
         {!! Html::style('css/mdb.min.css') !!}
         {!! Html::style('css/datatables.min.css') !!}
@@ -116,7 +116,7 @@ use GuzzleHttp\Client;
         {!! Html::style('css/buttons.dataTables.min.css') !!}
         {!! Html::style('fontawesome/css/all.css') !!}
         {!! Html::style('css/select2.min.css') !!}
-        
+
         {!! Html::script('js/jquery-3.3.1.min.js') !!}
         {!! Html::script('js/popper.min.js') !!}
         {!! Html::script('js/app.js') !!}
@@ -131,7 +131,7 @@ use GuzzleHttp\Client;
         {!! Html::script('js/buttons.html5.min.js') !!}
         {!! Html::script('js/buttons.print.min.js') !!}
         {!! Html::script('js/select2.min.js') !!}
-        
+
         <script type="text/javascript">
             $(document).ready(function () {
                 $('#myTable1').DataTable({
@@ -152,7 +152,7 @@ use GuzzleHttp\Client;
                     ]
                 });
             });
-            
+
             function confirmDisable() {
                 if (confirm("Are you sure you want to disable this item?")) {
                     return true;
@@ -160,7 +160,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmDelete() {
                 if (confirm("Are you sure you want to completely delete this item?")) {
                     return true;
@@ -168,7 +168,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmRemove() {
                 if (confirm("Are you sure you want to remove this item?")) {
                     return true;
@@ -176,7 +176,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmSubmit() {
                 if (confirm("Are you sure you want to submit this request?")) {
                     return true;
@@ -184,7 +184,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmCancel() {
                 if (confirm("Are you sure you want to cancel this request?")) {
                     return true;
@@ -192,7 +192,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmCreateCadet() {
                 if (confirm("Please confirm all data before you submit.\nAre you sure you want to submit this request?")) {
                     return true;
@@ -200,7 +200,7 @@ use GuzzleHttp\Client;
                     return false;
                 }
             }
-            
+
             function confirmApprove() {
                 if (confirm("Are you sure you want to approve this item?")) {
                     return true;
@@ -211,12 +211,12 @@ use GuzzleHttp\Client;
         </script>
 
         <!-- Styles -->
-        
+
     </head>
     <?php
     if (!isset($_SESSION)) session_start();
     $halo_user = $_SESSION['halo_user'];
-    
+
     $client = new Client();
     $res = $client->request('GET', DB::table('acc_config')->whereId(1)->first()->master_url.'/api/getRoles', [
         'query' => [
@@ -243,7 +243,7 @@ use GuzzleHttp\Client;
             </div>
             <div class="row bg-secondary">
                 <div class="col-12" style="height: 10px;">
-                    
+
                 </div>
             </div>
             <div class="row">
@@ -275,7 +275,7 @@ use GuzzleHttp\Client;
                                         @endif
                                     </nav>
                                 </div>
-                            </div> 
+                            </div>
                         </div>
                         @if (count(array_intersect($permissions, ['Admin', 'Investigator', 'Manager'])) != 0)
                         <div class="card">
@@ -296,7 +296,25 @@ use GuzzleHttp\Client;
                                         @endif
                                     </nav>
                                 </div>
-                            </div> 
+                            </div>
+                        </div>
+                        @endif
+                        @if (count(array_intersect($permissions, ['Manager'])) != 0)
+                        <div class="card">
+                            <div class="card-header bg-white" id="heading-menu4" style="padding: 0;">
+                                <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapse-menu4" aria-expanded="true" aria-controls="collapse-menu4">
+                                        <strong>Reports</strong>
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapse-menu4" class="collapse @if (isset($open_menu) && $open_menu == 'reports') show @endif" aria-labelledby="heading-menu4" data-parent="#accordion-menu">
+                                <div class="card-body">
+                                    <nav class="nav flex-column">
+                                        <a class="nav-link" href="{{ route('reports.investigators') }}">Investigator List</a>
+                                    </nav>
+                                </div>
+                            </div>
                         </div>
                         @endif
                         @if (count(array_intersect($permissions, ['Admin'])) != 0)

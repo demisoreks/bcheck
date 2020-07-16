@@ -55,7 +55,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
             </div>
             <div class="card">
                 <div class="card-header bg-white text-primary" id="heading4" style="padding: 0;">
@@ -101,7 +101,7 @@
                             </tbody>
                         </table>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </div>

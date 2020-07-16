@@ -18,12 +18,12 @@ class InvestigatorsController extends Controller
         $investigators = AccEmployee::where('active', true)->whereIn('id', AccEmployeeRole::where('role_id', AccRole::where('privileged_link_id', config('var.link_id'))->where('title', 'Investigator')->where('active', true)->first()->id)->pluck('employee_id')->toArray())->get();
         return view('investigators.index', compact('investigators'));
     }
-    
+
     public function edit($employee_slug) {
         $employee = AccEmployee::findBySlug($employee_slug);
         return view('investigators.edit', compact('employee'));
     }
-    
+
     public function store(Request $request) {
         $input = $request->input();
         $error = "";

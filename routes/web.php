@@ -113,3 +113,7 @@ Route::post('tasks/{request_service}/complete', [
 Route::bind('request_services', function($value, $route) {
     return App\BchRequestService::findBySlug($value)->first();
 });
+
+Route::get('reports/investigators', [
+    'as' => 'reports.investigators', 'uses' => 'ReportsController@investigators'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Manager']);
