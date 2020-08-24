@@ -266,7 +266,7 @@ use GuzzleHttp\Client;
                             <div id="collapse-menu1" class="collapse @if (!isset($open_menu)) show @endif" aria-labelledby="heading-menu1" data-parent="#accordion-menu">
                                 <div class="card-body">
                                     <nav class="nav flex-column">
-                                        <a class="nav-link" href="{{ route('welcome') }}">Dashboard</a>
+                                        <a class="nav-link" href="{{ route('welcome') }}">Home</a>
                                         @if (count(array_intersect($permissions, ['Manager'])) != 0)
                                         <a class="nav-link" href="{{ route('tasks.new') }}">Pending Tasks</a>
                                         @endif
