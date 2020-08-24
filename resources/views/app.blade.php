@@ -312,6 +312,8 @@ use GuzzleHttp\Client;
                                 <div class="card-body">
                                     <nav class="nav flex-column">
                                         <a class="nav-link" href="{{ route('reports.investigators') }}">Investigator List</a>
+                                        <a class="nav-link" href="{{ route('reports.investigator') }}">Investigator Report</a>
+                                        <a class="nav-link" href="{{ route('reports.tasks') }}">Task List</a>
                                     </nav>
                                 </div>
                             </div>

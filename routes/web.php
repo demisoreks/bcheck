@@ -117,3 +117,12 @@ Route::bind('request_services', function($value, $route) {
 Route::get('reports/investigators', [
     'as' => 'reports.investigators', 'uses' => 'ReportsController@investigators'
 ])->middleware(['auth.user', 'auth.access:'.$link_id.',Manager']);
+Route::match(['get', 'post'], 'reports/investigator', [
+    'as' => 'reports.investigator', 'uses' => 'ReportsController@investigator'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Manager']);
+Route::get('reports/task/{request_service}', [
+    'as' => 'reports.task', 'uses' => 'ReportsController@task'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Manager']);
+Route::match(['get', 'post'], 'reports/tasks', [
+    'as' => 'reports.tasks', 'uses' => 'ReportsController@tasks'
+])->middleware(['auth.user', 'auth.access:'.$link_id.',Manager']);

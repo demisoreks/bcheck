@@ -17,7 +17,7 @@
                 <strong>LIST OF INVESTIGATORS</strong>
             </div>
             <div class="card-body bg-white">
-                <table id="myTable1" class="display-1 table table-condensed table-hover table-striped responsive" width="100%">
+                <table id="myTable4" class="display-1 table table-condensed table-hover table-striped responsive" width="100%">
                     <thead>
                         <tr class="text-center">
                             <th><strong>NAME</strong></th>
