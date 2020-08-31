@@ -28,6 +28,18 @@
             <div class="col-auto">
                 {!! Form::select('status', ['Open' => 'Open', 'In Progress' => 'In Progress', 'Closed' => 'Closed'], $value = null, ['class' => 'form-control', 'placeholder' => '- Select Status -']) !!}
             </div>
+            <div class="col-auto">
+                {!! Form::label('client_name', 'Client Name', []) !!}
+            </div>
+            <div class="col-auto">
+                {!! Form::text('client_name', $value = null, ['class' => 'form-control', 'placeholder' => 'Client Name']) !!}
+            </div>
+            <div class="col-auto">
+                {!! Form::label('sector', 'Sector', []) !!}
+            </div>
+            <div class="col-auto">
+                {!! Form::text('sector', $value = null, ['class' => 'form-control', 'placeholder' => 'Sector']) !!}
+            </div>
         </div>
         <br />
         @include('reports/date_form', ['submit_text' => 'Search'])

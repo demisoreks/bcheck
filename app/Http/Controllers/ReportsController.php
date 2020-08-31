@@ -8,7 +8,9 @@ use Carbon\Carbon;
 use App\AccEmployee;
 use App\AccEmployeeRole;
 use App\AccRole;
+use App\BchClient;
 use App\BchInvestigator;
+use App\BchRequest;
 use App\BchService;
 use App\BchRequestService;
 use App\Charts\BCheckChart;
@@ -109,19 +111,25 @@ class ReportsController extends Controller
             $investigator_id = $input['investigator_id'];
             $service_id = $input['service_id'];
             $status = $input['status'];
+            $client_name = $input['client_name'];
+            $sector = $input['sector'];
         } else {
             $to_date = date("Y-m-d");
             $from_date = date("Y-m-d", strtotime('-7 days', strtotime($to_date)));
             $investigator_id = null;
             $service_id = null;
             $status = null;
+            $client_name = null;
+            $sector = null;
         }
         $param = [
             'from_date' => $from_date,
             'to_date' => $to_date,
             'investigator_id' => $investigator_id,
             'service_id' => $service_id,
-            'status' => $status
+            'status' => $status,
+            'client_name' => $client_name,
+            'sector' => $sector
         ];
 
         $date_range = [date($from_date)." 00:00:00", date($to_date)." 23:59:59"];
@@ -138,6 +146,12 @@ class ReportsController extends Controller
         }
         if ($status) {
             $tasks = $tasks->where('status', $status);
+        }
+        if ($client_name) {
+            $tasks = $tasks->whereIn('request_id', BchRequest::whereIn('client_id', BchClient::where('name', 'like', '%'.$client_name.'%')->pluck('id')->toArray())->pluck('id')->toArray());
+        }
+        if ($sector) {
+            $tasks = $tasks->whereIn('request_id', BchRequest::whereIn('client_id', BchClient::where('sector', 'like', '%'.$sector.'%')->pluck('id')->toArray())->pluck('id')->toArray());
         }
 
         $task_list = $tasks->get();
